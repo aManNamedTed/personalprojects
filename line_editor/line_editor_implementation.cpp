@@ -4,7 +4,7 @@
 #include <vector>
 #include <cstdlib>
 #include <iomanip>
-#include "line_editor.h"
+#include "line_editor_header.h"
 
 using std::cin;
 using std::cout;
