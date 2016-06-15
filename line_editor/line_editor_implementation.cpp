@@ -15,6 +15,7 @@ using std::string;
 using std::vector;
 using std::getline;
 using std::setw;
+using std::getchar;
 
 void line_editor_menu()
 {
@@ -106,7 +107,7 @@ void write_menu(vector<string> &program, string file_name)
 {
   int option = 0;
 
-  while(option != 4)
+  while(option != 5)
   {
     print_program(program);
 
@@ -114,10 +115,11 @@ void write_menu(vector<string> &program, string file_name)
     cout << "1: Insert Text -- Accepts one line of input, then asks the line number you want to insert the line before." << endl;
     cout << "2: Append Text -- Accepts from a character to a line of input, then asks the three characters you want it to be appended to." << endl;
     cout << "3: Delete Lines -- Asks for line number, or a range of line numbers to delete." << endl;
-    cout << "4: Write File -- Saves all new additions, exits file editing, and returns to main menu." << endl;
+    cout << "4: Display File -- Displays current contents of the file." << endl;
+    cout << "5: Write File -- Saves all new additions, exits file editing, and returns to main menu." << endl;
     cin >> option;
 
-    while(option < 1 || option > 4)
+    while(option < 1 || option > 5)
     {
       cout << "Invalid choice, please try again." << endl;
       cin >> option;
@@ -135,6 +137,9 @@ void write_menu(vector<string> &program, string file_name)
         delete_lines(program);
         break;
       case 4:
+        display_file(program, file_name);
+        break;
+      case 5:
         write_program(program, file_name);
         break;
     }
@@ -289,6 +294,17 @@ void delete_lines(vector<string> &program)
       }
       break;
   }
+}
+
+void display_file(vector<string> program, string file_name)
+{
+  cin.ignore(1, '\n');
+  cout << string(35, '\n');
+  cout << "Printing file: [" << file_name << "]" << endl;
+  print_program(program);
+  cout << "End of file: [" << file_name << "]" << endl;
+  cout << "Press enter to continue..." << endl;
+  getchar();
 }
 
 void write_program(vector<string> program, string file_name)

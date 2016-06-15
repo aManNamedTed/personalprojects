@@ -16,5 +16,6 @@ void insert_text(vector<string>& program);
 void append_text(vector<string>& program);
 void delete_lines(vector<string>& program);
 void write_program(vector<string> program, string file_name);
+void display_file(vector<string> program, string file_name);
 
 #endif
