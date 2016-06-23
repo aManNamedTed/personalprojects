@@ -7,6 +7,7 @@ public class reverse_string
     Scanner thePhrase = new Scanner(System.in);
     String phrase;
     int strLength;
+    char[] c;
 
     System.out.println("Enter string that you want to reverse: ");
 
@@ -18,7 +19,7 @@ public class reverse_string
 
     for(int i = 0; i < strLength; i++)
     {
-      System.out.println(phrase(i));
+
     }
 
   }
