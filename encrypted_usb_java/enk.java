@@ -10,35 +10,37 @@ public class enk {
   JFrame frame;
   JTextField field; //to get username
   JPasswordField p;
-  JLabel 1;
+  JLabel l;
   JButton button;
 
-  startWindow(){
+  public enk(){
 
-    frame = new JFrame("Encrypted USB 0.1.1"); //initializing frame, you can pass anything as to appear on title bar
+    frame = new JFrame("Encrypted USB 1.0.0.a"); //initializing frame, you can pass anything as to appear on title bar
     frame.setSize(500,500);
+    frame.getContentPane().setBackground(Color.black);
     frame.setLocation(300, 200);
     frame.setLayout(null);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-    1 = new JLabel("Enter username");
-    1.setLocation(10,10);
-    1.setSize(1.getPreferredSize());
-    frame.add(1);
+    l = new JLabel("Enter username: ");
+    l.setLocation(10,10);
+    l.setSize(l.getPreferredSize());
+    frame.add(l);
 
     field = new JTextField();
+    field.setColumns(15);
     field.setSize(field.getPreferredSize());
-    field.setColumns(25);
-    field.setLocation(30, 10);
-    field.setToolTipText("Enter User Name: ");
-    field.add(field);
 
+    l = new JLabel("Enter password");
+    l.setLocation(10,40);
+    l.setSize(l.getPreferredSize());
+    frame.add(l);
 
     frame.setVisible(true);
 
   } //end of enk constructor
 
   public static void main(String args[]){
-    new startWindow();
+    new enk();
   }
 }
