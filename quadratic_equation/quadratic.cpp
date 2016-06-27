@@ -9,7 +9,14 @@ int main()
   int a, b, c;
   int font_size;
 
+  a = 1;
+  b = 2;
+  c = 3;
+  font_size = 11;
+
   cout << "Quadratic Equation calculator to LaTeX v1.0.0" << endl;
+
+  /*
   cout << "Enter the font pt size you want for your LaTeX doc: ";
   cin >> font_size;
 
@@ -20,6 +27,7 @@ int main()
   cin >> b;
   cout << "Enter the value of c: ";
   cin >> c;
+  */
 
   cout << endl;
   cout << "\\documentclass[" << font_size << "]{article}\n";
