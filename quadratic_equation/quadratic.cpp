@@ -27,6 +27,12 @@ int main()
   cout << "\\usepackage{amsfonts}" << endl;
   cout << "\\usepackage{graphicx}" << endl;
 
-  cout << "\nbegin{document}" << endl;
+  cout << endl;
+  cout << "\\begin{document}" << endl;
+  cout << " \\begin{center}" << endl;
+  cout << "  The Quadratic Equation is defined as:" << endl;
+  cout << " \\end{center}" << endl;
+  cout << " \\begin{Large}" << endl;
+  cout << "  $$x = \\frac{-(" << b << ") \\pm \\sqrt{" << b << "^2 - 4(" << a << ")(" << c << ")}}{2(" << a << ")}" << endl;
   return 0;
 }
