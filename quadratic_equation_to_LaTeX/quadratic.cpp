@@ -1,3 +1,12 @@
+/*
+  Name: David Amante
+  Created: June 27, 2016
+  Project: Make a program that:
+    -Solves the Quadratic Equation
+    -Shows all steps to solving the Quadratic Equation
+    -Pushes all calculations to a LaTeX ('.tex') file to push to a PDF through TeX
+*/
+
 #include <iostream>
 #include <string>
 #include <fstream>
