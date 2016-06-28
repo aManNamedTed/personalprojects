@@ -5,6 +5,8 @@
     -Solves the Quadratic Equation
     -Shows all steps to solving the Quadratic Equation
     -Pushes all calculations to a LaTeX ('.tex') file to push to a PDF through TeX
+
+  Note: All 'quadratic_writeup.*' files are what I used as a reference to complete this program.
 */
 
 #include <iostream>
@@ -78,7 +80,6 @@ int main()
   cin >> b;
   cout << "Enter the value of c: ";
   cin >> c;
-
 
   cout << "%Quadratic Equation calculator to LaTeX " << version << ", by David Amante" << endl;
   out << "%Quadratic Equation calculator to LaTeX " << version << ", by David Amante" << endl;
