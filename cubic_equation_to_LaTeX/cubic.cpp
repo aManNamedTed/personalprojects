@@ -1,6 +1,6 @@
   /*
   Name: David Amante
-  Created: 1 July 2016
+  Created: 1 July 2016 - 5 July 2016
   Project: Create a program that calculates the root of a cubic equation assuming delta is > 0.
     Note: Line numbers are intentionally excluded from printing because the user can fix the TeX file in their TeX editor.
 */
