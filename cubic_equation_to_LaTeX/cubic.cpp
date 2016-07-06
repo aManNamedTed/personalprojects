@@ -7,14 +7,22 @@
 
 #include <iostream>
 #include <cmath>
+#include <fstream>
+#include <string>
 
 using std::cin;
 using std::cout;
 using std::endl;
 using std::sqrt;
+using std::ofstream;
+using std::string;
+using std::getline;
 
 int main()
 {
+  ofstream out;
+  string file_name;
+
   int font_size = 0;
 
   int p = 6;
@@ -32,6 +40,37 @@ int main()
   int delta_add_denom = 0;
   int delta_sub_num = 0;
   int delta_sub_denom = 0;
+
+  bool not_sure = false;
+  char response;
+
+
+  while(not_sure == false)
+  {
+    cout << "Enter what you want to name your .tex file: ";
+    getline(cin, file_name);
+
+    cout << "Is the name: '" << file_name << ".tex' correct? (Y/N)" << endl;
+    while(response != 'Y' && response != 'y' && response != 'N' && response != 'n')
+    {
+      cout << "Enter 'Y' or 'y' for yes, 'N' or 'n' for no." << endl;
+      cin >> response;
+    }
+
+    if(response == 'y' || response == 'y')
+    {
+      not_sure = true;
+    }
+    else if(response == 'N' || response == 'n')
+    {
+      //to catch the return from the 'N' or 'n' response
+      cin.ignore(1, '\n');
+    }
+  }
+
+  //open new LaTeX file
+  file_name += ".tex";
+  out.open(file_name.c_str());
 
   while(font_size < 10 || font_size > 12)
   {
@@ -243,4 +282,6 @@ int main()
   cout << "=============================================" << endl;
   cout << "###             End LaTeX File            ###" << endl;
   cout << "=============================================" << endl;
+  out.close();
+  return 0;
 }
