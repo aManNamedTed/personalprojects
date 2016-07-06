@@ -2,6 +2,7 @@
   Name: David Amante
   Created: 1 July 2016
   Project: Create a program that calculates the root of a cubic equation assuming delta is > 0.
+    Note: Line numbers are intentionally excluded from printing because the user can fix the TeX file in their TeX editor.
 */
 
 #include <iostream>
@@ -10,7 +11,7 @@
 using std::cin;
 using std::cout;
 using std::endl;
-using std::pow;
+using std::sqrt;
 
 int main()
 {
@@ -27,6 +28,11 @@ int main()
   int delta_num = 0;
   int delta_denom = 0;
 
+  int delta_add_num = 0;
+  int delta_add_denom = 0;
+  int delta_sub_num = 0;
+  int delta_sub_denom = 0;
+
   while(font_size < 10 || font_size > 12)
   {
     cout << "Enter a font size (10, 11, 12): ";
@@ -39,11 +45,17 @@ int main()
   cout << "Enter your value of Q: ";
   cin >> q;
 
+  //initialize doc class and LaTeX packages
+  cout << "=============================================" << endl;
+  cout << "###            Start LaTeX File           ###" << endl;
+  cout << "=============================================" << endl;
   cout << "\\documentclass[" << font_size << "]{article}" << endl;
   cout << "\\usepackage{fullpage}" << endl;
   cout << "\\usepackage{amsfonts}" << endl;
   cout << "\\usepackage{graphicx}" << endl;
   cout << endl;
+
+  //begin doc
   cout << "\\begin{document}" << endl;
   cout << "  \\begin{center}" << endl;
   cout << "    The Cubic Equation is defined as: " << endl;
@@ -55,6 +67,9 @@ int main()
   cout << "    \\end{center}" << endl;
   cout << "  \\end{Large}" << endl;
   cout << endl << endl;
+
+  //define Delta and roots of X
+  cout << "  % Begin definitions of Delta and roots of x" << endl;
   cout << "  \\begin{center}" << endl;
   cout << "    \\begin{tabular}{|c|c|}" << endl;
   cout << "    \\hline" << endl;
@@ -67,20 +82,21 @@ int main()
   cout << "      \\end{large}" << endl;
   cout << "    \\\\ \\hline" << endl;
   cout << "      \\begin{Large}" << endl;
-  cout << "      $x = \\sqrt[3]{\\sqrt{\\Delta} + \frac{Q}{2}} - \\sqrt[3]{\\sqrt{\\Delta} - \frac{Q}{2}}$,"
+  cout << "        $x = \\sqrt[3]{\\sqrt{\\Delta} + \\frac{Q}{2}} - \\sqrt[3]{\\sqrt{\\Delta} - \\frac{Q}{2}}$," << endl;
   cout << "      \\end{Large}" << endl;
   cout << "      &" << endl;
   cout << "      \\begin{Large}" << endl;
-  cout << "      $\\Delta = \frac{Q^2}{4} + \frac{P^3}{27}$" << endl;
+  cout << "        $\\Delta = \\frac{Q^2}{4} + \\frac{P^3}{27}$" << endl;
   cout << "      \\end{Large}" << endl;
   cout << "    \\\\ \\hline" << endl;
   cout << "    \\end{tabular}" << endl;
-  cout << "  \\end{center}" << endl;
+  cout << "  \\end{center}" << endl << endl;
 
+  //begin cubic equation calculation
+  cout << "  % Define P and Q" << endl;
   cout << "  \\begin{center}" << endl;
   cout << "    Using the given data of P = " << p << "; Q = " << q << endl;
   cout << "  \\end{center}" << endl;
-
   cout << "  \\begin{center}" << endl;
   cout << "    \\begin{large}" << endl;
   cout << "    $" << endl;
@@ -88,10 +104,11 @@ int main()
   cout << "        \\left[ \\Delta = \\frac{" << q << "^2}{4} + \\frac{" << p << "^3}{27} \\right]" << endl;
   cout << "          \\rightarrow" << endl;
   cout << "        \\left[ \\Delta = \\frac{" << q * q << "}{4} + \\frac{" << p * p << "}{27} \\right]" << endl;
+  cout << "          \\rightarrow" << endl;
+
+  //q and p delta number initialization to solve for delta
   q_delta_num = q * q;
   p_delta_num = p * p * p;
-
-  cout << "          \\rightarrow" << endl;
 
   //simplify out all %2 and %3
   //simplify q delta factor
@@ -105,7 +122,6 @@ int main()
     q_delta_num /= 3;
     q_delta_denom /= 3;
   }
-  cout << q_delta_num << " / " << q_delta_denom << endl;
 
   //simplify p delta factor
   while(p_delta_num % 2 == 0 && p_delta_denom % 2 == 0)
@@ -118,7 +134,6 @@ int main()
     p_delta_num /= 3;
     p_delta_denom /= 3;
   }
-  cout << p_delta_num << " / " << p_delta_denom << endl;
 
   cout << "        \\left[ \\Delta = \\frac{" << q_delta_num << "}{" << q_delta_denom << "} + \\frac{" << p_delta_num << "}{" << p_delta_denom << "} \\right]" << endl;
   cout << "          \\rightarrow" << endl;
@@ -138,30 +153,94 @@ int main()
     p_delta_num *= q_delta_denom;
     p_delta_denom *= q_delta_denom;
   }
-  cout << "Q Fraction: " << q_delta_num << " / " << q_delta_denom << endl;
-  cout << "P Fraction: " << p_delta_num << " / " << p_delta_denom << endl;
+
+  delta_num = q_delta_num + p_delta_num;
+  delta_denom = q_delta_denom;
 
 	cout << "        \\left[ \\Delta = \\frac{" << q_delta_num << "}{" << q_delta_denom << "} + \\frac{" << p_delta_num << "}{" << p_delta_denom << "} \\right]" << endl;
   cout << "          \\rightarrow" << endl;
-  delta_num = q_delta_num + p_delta_num;
-  delta_denom = q_delta_num;
-
-	cout << "	       \\left[ \\Delta = \\frac{" << delta_num << "}{" << delta_denom << "} \\right]" << endl;
+	cout << "        \\left[ \\Delta = \\frac{" << delta_num << "}{" << delta_denom << "} \\right]" << endl;
   cout << "    $" << endl;
   cout << "    \\end{large}" << endl;
   cout << "  \\end{center}" << endl;
 
   //check if the delta_numerator and delta_denominator need to be reduced because delta goes through square root
   //put in the values that were acquired from above.
+  cout << endl;
   cout << "  \\begin{center}" << endl;
-  cout << "	   Using the given data of $\\Delta = \\frac{81}{4}$" << endl;
+  cout << "    Using the given data of $\\Delta = \\frac{" << delta_num << "}{" << delta_denom << "}$" << endl;
   cout << "  \\end{center}" << endl;
+  cout << endl;
 
   cout << "  \\begin{center}" << endl;
   cout << "    \\begin{large}" << endl;
-  //lines 67-99
+  cout << "    $$" << endl;
+  cout << "      x = \\sqrt[3]{\\sqrt{\\frac{" << delta_num << "}{" << delta_denom << "}} + \\frac{" << q << "}{2}}" << endl;
+  cout << "        - \\sqrt[3]{\\sqrt{\\frac{" << delta_num << "}{" << delta_denom << "}} - \\frac{" << q << "}{2}}" << endl;
+  cout << "    $$" << endl;
+
+  delta_num = sqrt(delta_num);
+  delta_denom = sqrt(delta_denom);
+  cout << "    $$" << endl;
+  cout << "      x = \\sqrt[3]{\\frac{" << delta_num << "}{" << delta_denom << "}} + \\frac{" << q << "}{2}}" << endl;
+  cout << "        - \\sqrt[3]{\\frac{" << delta_num << "}{" << delta_denom << "}} - \\frac{" << q << "}{2}}" << endl;
+  cout << "    $$" << endl;
+
+  delta_add_num = delta_num + q;
+  delta_add_denom = delta_denom;
+
+  delta_sub_num = delta_num - q;
+  delta_sub_denom = delta_denom;
+
+  if(delta_denom == 2)
+  {
+    cout << "    $$" << endl;
+    cout << "      x = \\sqrt[3]{\\frac{" << delta_add_num << "}{" << delta_add_denom << "}}" << endl;
+    cout << "        - \\sqrt[3]{\\frac{" << delta_sub_num << "}{" << delta_sub_denom << "}}" << endl;
+    cout << "    $$" << endl;
+  }
+
+  while(delta_add_num % 2 == 0 && delta_add_denom % 2 == 0)
+  {
+    delta_add_num /= 2;
+    delta_add_denom /= 2;
+  }
+  while(delta_sub_num % 2 == 0 && delta_sub_denom % 2 == 0)
+  {
+    delta_sub_num /= 2;
+    delta_sub_denom /= 2;
+  }
+
+  cout << "    $$" << endl;
+  cout << "      x = \\sqrt[3]{\\frac{" << delta_add_num << "}{" << delta_add_denom << "}}" << endl;
+  cout << "        - \\sqrt[3]{\\frac{" << delta_sub_num << "}{" << delta_sub_denom << "}}" << endl;
+  cout << "    $$" << endl;
+
+  cout << "    $$" << endl;
+  if(delta_add_denom == 1)
+  {
+    cout << "      x = \\sqrt[3]{" << delta_add_num << "}" << endl;
+  }
+  if(delta_sub_denom == 1)
+  {
+    cout << "      x = \\sqrt[3]{" << delta_sub_num << "}" << endl;
+  }
+  cout << "    $$" << endl;
+
+  delta_add_num = cbrt(static_cast<double> (delta_add_num));
+  delta_sub_num = cbrt(static_cast<double> (delta_sub_num));
+  cout << "    $$" << endl;
+  cout << "      x = (" << delta_add_num << ")" << endl;
+  cout << "      x = (" << delta_sub_num << ")" << endl;
+  cout << "    $$" << endl;
+
+  cout << "    $$" << endl;
+  cout << "      x = (" << delta_add_num - delta_sub_num << ")" << endl;
+  cout << "    $$" << endl;
   cout << "    \\end{large}" << endl;
   cout << "  \\end{center}" << endl;
-
   cout << "\\end{document}" << endl;
+  cout << "=============================================" << endl;
+  cout << "###             End LaTeX File            ###" << endl;
+  cout << "=============================================" << endl;
 }
