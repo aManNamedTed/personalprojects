@@ -14,7 +14,7 @@ using std::endl;
 using std::cos;
 
 const double PI = 3.14159265;
-
+const double ONE_EIGHTY = 180.0;
 int main()
 {
   cout << "Welcome to the Law of Cosines calculator." << endl;
@@ -27,9 +27,10 @@ int main()
   double angle_c = 0;
   double c = 0;
 
-  double answer = 0;
+  char side_to_find;
+  double answer = -1;
 
-  while(answer > 0)
+  while(answer <= 0)
   {
     cout << "Enter 0 for the value you want to find." << endl;
     cout << "value of side a: ";
@@ -50,29 +51,29 @@ int main()
 
     if(a == 0)
     {
-      answer = (c * c) + (b * b) - (2 * c * b * cos(angle_a * PI / 180.0));
-      cout << answer;
+      answer = (c * c) + (b * b) - (2 * c * b * cos(angle_a * PI / ONE_EIGHTY));
+      side_to_find = 'a';
     }
     else if(b == 0)
     {
-
+      answer = (a * a) + (c * c) - (2 * a * c * cos(angle_b * PI / ONE_EIGHTY));
+      side_to_find = 'b';
     }
     else if(c == 0)
     {
-
+      answer = (a * a) + (b * b) - (2 * a * b * cos(angle_c * PI / ONE_EIGHTY));
+      side_to_find = 'c';
     }
-    answer =
-    if(answer > 0)
+    if(answer < 0)
     {
       cout << "Error: Negative side/angle value." << endl;
       cout << "       Please check your values." << endl;
       cout << endl << endl;
     }
+    else if(answer > 0)
+    {
+      cout << "Side " << side_to_find << " is: " << answer << "." << endl;
+    }
   }
-
-
-
-
-
   return 0;
 }
