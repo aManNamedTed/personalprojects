@@ -15,6 +15,7 @@ using std::cos;
 
 const double PI = 3.14159265;
 const double ONE_EIGHTY = 180.0;
+
 int main()
 {
   cout << "Welcome to the Law of Cosines calculator." << endl;
