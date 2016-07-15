@@ -4,6 +4,8 @@
   Project: Create a program that can calculate the law of cosines. Make sure these restrictions are acknowledged:
     - No negative answers. If negative, respond with why, either
     - no angles >= 178 because the triangle needs 3 angles, and the other two's lowest angle value can be 1 degree.
+    - No ASS cases possible. Solve for two different triangles
+    - refer to whiteboard
 */
 #include<iostream>
 #include<cmath>
