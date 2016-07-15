@@ -68,7 +68,7 @@ int main()
     if(answer < 0)
     {
       cout << "Error: Negative side/angle value." << endl;
-      cout << "       Please check your values." << endl;
+      cout << "       No solution." << endl;
       cout << endl << endl;
     }
     else if(answer > 0)
