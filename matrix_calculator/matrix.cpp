@@ -1,3 +1,17 @@
+/*
+  Name: David Amante
+  Date: 16 July 2016
+  Project: Find solutions to a matrix of the form, (x + y = c), up to 2 equations.
+           For future reference, try to solve these other matrix problems:
+            - [n x n]
+            - [n x m]
+            - [n x n][n x n]
+            - [n x n][n x m]
+              *Define when ragged matrices do not compute correctly.
+               There are certain matrices dimensions that can not be
+               combined.
+
+*/
 #include <iostream>
 #include <cmath>
 
