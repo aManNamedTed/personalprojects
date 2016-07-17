@@ -34,6 +34,23 @@ int main()
   cout << "Enter c_2: ";
   cin >> c_2;
 
+  /*
+    Of the form:
+    =============
+    x_1 y_1 | c_1
+    x_2 y_2 | c_2
+    =============
+    Dx =  | c_1 y_1 | => (c_1 * y_2) - (c_2 * y_1) => Dx
+          | c_2 y_2 |
+
+    Dy =  | x_1 c_1 | => (x_1 * c_2) - (x_2 * c_1) => Dy
+          | x_2 c_2 |
+
+    Dx =  | x_1 y_1 | => (x_1 * y_2) - (x_2 * y_1) => D
+          | x_2 y_2 |
+
+    Solution = (Dx/D, Dy/D)
+  */
   Dx = c_1 * y_2 - c_2 * y_1;
   Dy = x_1 * c_2 - x_2 * c_1;
   D = x_1 * y_2 - x_2 * y_1;
