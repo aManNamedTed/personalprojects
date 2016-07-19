@@ -6,21 +6,25 @@
     - no angles >= 178 because the triangle needs 3 angles, and the other two's lowest angle value can be 1 degree.
 */
 
+//libraries for function use
 #include <iostream>
 #include <cmath>
 
+//'namespace syntax' which is essentially an extended library for further function use
 using std::cin;
 using std::cout;
 using std::endl;
 using std::sin;
 using std::asin;
 
+//declaring constants and setting them to a value
 const double PI = 3.14159265;
 const double ONE_EIGHTY = 180.0;
 
 int main()
 {
   //lowercase for sides
+  //double is a data type that uses enough data to show decimals
   double a = 0;
   double b = 0;
   double c = 0;
@@ -30,11 +34,13 @@ int main()
   double B = 100;
   double C = 100;
 
+  //'cout' prints whatever is between the " " to the screen for the user to read
   cout << "Law of Sines" << endl;
   cout << "Enter 0 if you do not know the value." << endl;
 
   //get side values;
   cout << "Side a: ";
+  //'cin' allows the user to input a value for this variable
   cin >> a;
   cout << "Side b: ";
   cin >> b;
@@ -42,6 +48,7 @@ int main()
   cin >> c;
 
   //get angle values
+  //'while([...])' is a loop that says, while these conditions are true, keep doing whatever is between the {}s
   while(A + B + C > 180)
   {
     cout << "Angle A: ";
@@ -50,6 +57,8 @@ int main()
     cin >> B;
     cout << "Angle C: ";
     cin >> C;
+
+    //'if([...])' is a loop that checks if the conditions in the () is/are true, if it is true, do whatever is in the {}s
     if(A + B + C == 180)
     {
       cout << "Angles are invalid." << endl;
@@ -58,11 +67,17 @@ int main()
     }
   }
 
+  //this while loop keeps cycling through the {}s until every value is non-zero
   while(a == 0 || b == 0 || c == 0 || A == 0 || B == 0 || C == 0)
   {
     //find missing sides
+    //the (a == 0 && B != 0 && b!= 0) is saying, if side a == 0--meaning if it is unknown--
+    //AND angle B != 0--is known--AND side b != 0--is also known--to do whatever is in the {}s
+    //the || means or. so either the left side of the ||, OR the right side has to be true to
+    //do whatever is in the {}s
     if((a == 0 && B != 0 && b != 0) || (a == 0 && C != 0 && c != 0))
     {
+      //checks to see whether the B/b's are known or the C/c's are known
       if(B != 0 && b != 0)
       {
         a = (b * sin(A * PI / ONE_EIGHTY) / sin(B * PI / ONE_EIGHTY));
@@ -110,6 +125,7 @@ int main()
     }
   }
 
+  //outputs the values for each side
   cout << "Values================" << endl;
   cout << "Side a: " << a << endl;
   cout << "Side b: " << b << endl;
