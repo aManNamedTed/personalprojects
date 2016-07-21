@@ -76,7 +76,6 @@ int main()
     //law of cosines
     if(a != 0 && b != 0 && c != 0)
     {
-      cout << "you're in this" << endl;
       A = acos(((c * c) - (a * a) + (b * b)) / (2 * b * c)) * ONE_EIGHTY / PI;
       cout << A << endl;
       B = acos(((c * c) + (a * a) - (b * b)) / (2 * c * a)) * ONE_EIGHTY / PI;
@@ -90,6 +89,7 @@ int main()
     //AND angle B != 0--is known--AND side b != 0--is also known--to do whatever is in the {}s
     //the || means or. so either the left side of the ||, OR the right side has to be true to
     //do whatever is in the {}s
+    //law of sines
     else if((a == 0 && B != 0 && b != 0) || (a == 0 && C != 0 && c != 0))
     {
       //checks to see whether the B/b's are known or the C/c's are known
