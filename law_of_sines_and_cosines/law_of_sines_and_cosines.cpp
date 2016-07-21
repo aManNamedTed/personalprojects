@@ -1,7 +1,8 @@
 /*
   Name: David Amante;
   Created: July 19 2016
-  Project: Create a program that can calculate the law of sines. Make sure these restrictions are acknowledged:
+  Project: Create a program that can calculate the law of sines. Use law of cosines if values permit.
+           Make sure these restrictions are acknowledged:
     - No negative answers. If negative, respond with why, either
     - no angles >= 178 because the triangle needs 3 angles, and the other two's lowest angle value can be 1 degree.
 */
@@ -16,6 +17,8 @@ using std::cout;
 using std::endl;
 using std::sin;
 using std::asin;
+using std::cos;
+using std::acos;
 
 //declaring constants and setting them to a value
 const double PI = 3.14159265;
@@ -35,7 +38,7 @@ int main()
   double C = 100;
 
   //'cout' prints whatever is between the " " to the screen for the user to read
-  cout << "Law of Sines" << endl;
+  cout << "Law of Sines/Law of Cosien" << endl;
   cout << "Enter 0 if you do not know the value." << endl;
 
   //get side values;
@@ -59,7 +62,7 @@ int main()
     cin >> C;
 
     //'if([...])' is a loop that checks if the conditions in the () is/are true, if it is true, do whatever is in the {}s
-    if(A + B + C == 180)
+    if(A + B + C > 180)
     {
       cout << "Angles are invalid." << endl;
       cout << "Please check your values and try again." << endl;
@@ -70,12 +73,24 @@ int main()
   //this while loop keeps cycling through the {}s until every value is non-zero
   while(a == 0 || b == 0 || c == 0 || A == 0 || B == 0 || C == 0)
   {
+    //law of cosines
+    if(a != 0 && b != 0 && c != 0)
+    {
+      cout << "you're in this" << endl;
+      A = acos(((c * c) - (a * a) + (b * b)) / (2 * b * c)) * ONE_EIGHTY / PI;
+      cout << A << endl;
+      B = acos(((c * c) + (a * a) - (b * b)) / (2 * c * a)) * ONE_EIGHTY / PI;
+      cout << B << endl;
+      C = acos((-(c * c) + (a * a) + (b * b)) / (2 * a * b)) * ONE_EIGHTY / PI;
+      cout << C << endl;
+    }
+
     //find missing sides
     //the (a == 0 && B != 0 && b!= 0) is saying, if side a == 0--meaning if it is unknown--
     //AND angle B != 0--is known--AND side b != 0--is also known--to do whatever is in the {}s
     //the || means or. so either the left side of the ||, OR the right side has to be true to
     //do whatever is in the {}s
-    if((a == 0 && B != 0 && b != 0) || (a == 0 && C != 0 && c != 0))
+    else if((a == 0 && B != 0 && b != 0) || (a == 0 && C != 0 && c != 0))
     {
       //checks to see whether the B/b's are known or the C/c's are known
       if(B != 0 && b != 0)
@@ -87,7 +102,7 @@ int main()
         a = (c * sin(A * PI / ONE_EIGHTY) / sin(C * PI / ONE_EIGHTY));
       }
     }
-    if((b == 0 && C != 0 && c != 0) || (b == 0 && A != 0 && a != 0))
+    else if((b == 0 && C != 0 && c != 0) || (b == 0 && A != 0 && a != 0))
     {
       if(A != 0 && a != 0)
       {
@@ -98,7 +113,7 @@ int main()
         b = (c * sin(B * PI / ONE_EIGHTY) / sin(C * PI / ONE_EIGHTY));
       }
     }
-    if((c == 0 && A != 0 && a != 0) || (c == 0 && B != 0 && b != 0))
+    else if((c == 0 && A != 0 && a != 0) || (c == 0 && B != 0 && b != 0))
     {
       if(A != 0 && a != 0)
       {
