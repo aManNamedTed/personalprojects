@@ -19,6 +19,7 @@ using std::sin;
 using std::asin;
 using std::cos;
 using std::acos;
+using std::sqrt;
 
 //declaring constants and setting them to a value
 const double PI = 3.14159265;
@@ -31,6 +32,10 @@ int main()
   double a = 0;
   double b = 0;
   double c = 0;
+  double first_less = 0;
+  double second_less = 0;
+  double greatest_num = 0;
+
 
   //uppercase for angles, initialized to flag the input for values while loop
   double A = 100;
@@ -42,13 +47,32 @@ int main()
   cout << "Enter 0 if you do not know the value." << endl;
 
   //get side values;
-  cout << "Side a: ";
-  //'cin' allows the user to input a value for this variable
-  cin >> a;
-  cout << "Side b: ";
-  cin >> b;
-  cout << "Side c: ";
-  cin >> c;
+  while(greatest_num - )
+  {
+    cout << "Side a: ";
+    cin >> a;
+    cout << "Side b: ";
+    cin >> b;
+    if(a > b)
+    {
+      greatest_num = a;
+      first_less = b;
+    }
+    else
+    {
+      greatest_num = b;
+      first_less = a;
+    }
+    cout << "Side c: ";
+    cin >> c;
+    if(c > greatest_num)
+    {
+      greatest_num = c;
+      second_less = b;
+      first_less = a;
+    }
+  }
+
 
   //get angle values
   //'while([...])' is a loop that says, while these conditions are true, keep doing whatever is between the {}s
@@ -73,7 +97,7 @@ int main()
   //this while loop keeps cycling through the {}s until every value is non-zero
   while(a == 0 || b == 0 || c == 0 || A == 0 || B == 0 || C == 0)
   {
-    //law of cosines
+    //law of cosines: SSS
     if(a != 0 && b != 0 && c != 0)
     {
       A = acos(((c * c) - (a * a) + (b * b)) / (2 * b * c)) * ONE_EIGHTY / PI;
@@ -82,6 +106,14 @@ int main()
       cout << B << endl;
       C = acos((-(c * c) + (a * a) + (b * b)) / (2 * a * b)) * ONE_EIGHTY / PI;
       cout << C << endl;
+    }
+
+    //law of cosines: SAS
+    else if(C != 0 && a != 0 && b != 0)
+    {
+      a = sqrt(((b * b) + (c * c) - 2 * b * c * (cos(A * PI) / ONE_EIGHTY)));
+      b = sqrt(((a * a) + (c * c) - 2 * a * c * (cos(B * PI) / ONE_EIGHTY)));
+      c = sqrt(((a * a) + (b * b) - 2 * a * b * (cos(C * PI) / ONE_EIGHTY)));
     }
 
     //find missing sides
