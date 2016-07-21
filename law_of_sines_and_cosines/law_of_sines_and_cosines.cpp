@@ -47,6 +47,7 @@ int main()
   cout << "Enter 0 if you do not know the value." << endl;
 
   //get side values;
+  //make sure zeroes and impossible triangles cannot be input
   while(greatest_num - )
   {
     cout << "Side a: ";
