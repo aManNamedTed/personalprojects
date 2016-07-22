@@ -91,6 +91,15 @@ int main()
         valid = false;
       }
     }
+    else if(a == b && b == c)
+    {
+      cout << "\nYou're really calculating the angles of an equilateral triangle?" << endl;
+      cout << "With a program that takes advantage of the law of cosines/law of sines?" << endl;
+      cout << "All three angles are 60 degrees." << endl;
+      cout << "Thank me later." << endl;
+      cout << endl;
+      valid = false;
+    }
     if(valid == false)
     {
       cout << "Values are invalid." << endl;
