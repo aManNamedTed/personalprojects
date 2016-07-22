@@ -27,15 +27,12 @@ const double ONE_EIGHTY = 180.0;
 
 int main()
 {
+  bool valid = false;
   //lowercase for sides
   //double is a data type that uses enough data to show decimals
   double a = 0;
   double b = 0;
   double c = 0;
-  double first_less = 0;
-  double second_less = 0;
-  double greatest_num = 0;
-
 
   //uppercase for angles, initialized to flag the input for values while loop
   double A = 100;
@@ -43,37 +40,63 @@ int main()
   double C = 100;
 
   //'cout' prints whatever is between the " " to the screen for the user to read
-  cout << "Law of Sines/Law of Cosien" << endl;
+  cout << "Law of Sines/Law of Cosines" << endl;
   cout << "Enter 0 if you do not know the value." << endl;
 
   //get side values;
   //make sure zeroes and impossible triangles cannot be input
-  while(greatest_num - )
+
+  while(valid == false)
   {
     cout << "Side a: ";
     cin >> a;
     cout << "Side b: ";
     cin >> b;
-    if(a > b)
-    {
-      greatest_num = a;
-      first_less = b;
-    }
-    else
-    {
-      greatest_num = b;
-      first_less = a;
-    }
     cout << "Side c: ";
     cin >> c;
-    if(c > greatest_num)
+
+    //checks for invalid triangles
+      //a + b >= c is valid
+      //a + b < c is invalid
+    if(a > b && a > c)
     {
-      greatest_num = c;
-      second_less = b;
-      first_less = a;
+      if(b + c >= a)
+      {
+        valid = true;
+      }
+      else if(b + c < a)
+      {
+        valid = false;
+      }
+    }
+    else if(b > a && b > c)
+    {
+      if(a + c >= b)
+      {
+        valid = true;
+      }
+      else if(a + c < b)
+      {
+        valid = false;
+      }
+    }
+    else if(c > a && c > b)
+    {
+      if(a + b >= c)
+      {
+        valid = true;
+      }
+      else if(a + b < c)
+      {
+        valid = false;
+      }
+    }
+    if(valid == false)
+    {
+      cout << "Values are invalid." << endl;
+      cout << "Please check your values and try again." << endl;
     }
   }
-
 
   //get angle values
   //'while([...])' is a loop that says, while these conditions are true, keep doing whatever is between the {}s
@@ -102,11 +125,8 @@ int main()
     if(a != 0 && b != 0 && c != 0)
     {
       A = acos(((c * c) - (a * a) + (b * b)) / (2 * b * c)) * ONE_EIGHTY / PI;
-      cout << A << endl;
       B = acos(((c * c) + (a * a) - (b * b)) / (2 * c * a)) * ONE_EIGHTY / PI;
-      cout << B << endl;
       C = acos((-(c * c) + (a * a) + (b * b)) / (2 * a * b)) * ONE_EIGHTY / PI;
-      cout << C << endl;
     }
 
     //law of cosines: SAS
