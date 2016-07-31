@@ -1,0 +1,14 @@
+@comments
+@@
+  multi lined comments
+@@
+
+@ # -> integer
+@ . -> char
+@ ! -> string
+@ & -> bool
+@ ? -> if
+@ , -> then
+@ ... -> while
+
+@keep symbols separated by a space
