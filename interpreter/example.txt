@@ -1,7 +1,4 @@
 @comments
-@@
-  multi lined comments
-@@
 
 @ # -> integer
 @ . -> char
@@ -12,3 +9,6 @@
 @ ... -> while
 
 @keep symbols separated by a space
+
+# integer_name
+# integer_name = 1234
