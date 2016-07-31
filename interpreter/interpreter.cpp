@@ -49,7 +49,7 @@ int main()
       }
       else
       {
-        cout << "Your # declaration "
+        cout << "Your # declaration does not have a single space after it. Fix it." << endl;
       }
 
 
