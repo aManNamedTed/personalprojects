@@ -1,6 +1,7 @@
 /*
-  
-
+  Name: David Amante
+  Created: 30 July 2016 - ...
+  Project: Develop a simple implementation of an interpreter. Be creative with data declarations.
 */
 
 #include <iostream>
