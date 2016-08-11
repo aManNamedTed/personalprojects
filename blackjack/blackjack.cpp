@@ -10,6 +10,7 @@ using std::string;
 using std::endl;
 using std::vector;
 
+
 class Deck
 {
   public:
@@ -27,7 +28,6 @@ void Deck::show_list()
   {
     cout << card_list[i] << " ";
   }
-
 }
 
 bool Deck::is_empty()
@@ -123,14 +123,39 @@ void Deck::shuffle()
   }
 }
 
+class Dealer : public Deck
+{
+  public:
+    void dealCards(Deck d);
+    void checkHand();
+    makeBet(double amount);
+
+  private:
+    double amount;
+    string card_one;
+    string card_two;
+    Deck deck;
+};
+
+void Dealer::dealCards(Deck d)
+{
+}
+
+void Dealer::checkHand()
+{
+
+}
+
 int main()
 {
   srand(time(NULL));
-  Deck deck;
+  Dealer dealer;
 
-  deck.shuffle();
-  deck.show_list();
-  deck.is_empty();
+  dealer.shuffle();
+
+
+  dealer.show_list();
+  dealer.is_empty();
 
   return 0;
 }
