@@ -28,7 +28,7 @@ int main()
   getchar();
   cout << setw(console_width / 3) << "Password: " << endl;
 
-  in.open("file.txt");
+  in.open("file2.txt");
 
   if(in.fail())
   {
@@ -36,14 +36,19 @@ int main()
     exit(1);
   }
 
-  while(in.get(c))
-  {
-    cout << c+1;
-  }
-
-
-
   in.close();
 
   return 0;
+}
+
+int check_alphabet(char c)
+{
+  switch(c)
+  {
+    case 'a':
+      break;
+    case 'b':
+      break;
+
+  }
 }
