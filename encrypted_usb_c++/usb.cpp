@@ -17,27 +17,26 @@ using std::vector;
 using std::getchar;
 using std::setw;
 
+int check_alphabet(char c);
+string get_password();
+
 int main()
 {
-  ifstream in;
-  char c;
-
   const int console_width = 70;
+  int tries = 4;
+  ifstream in;
+  string pw;
 
   cout << setw(console_width / 2) << "Welcome." << endl;
   getchar();
   cout << setw(console_width / 3) << "Password: " << endl;
-
-  in.open("file2.txt");
-
-  if(in.fail())
+  while(pw != "poop")
   {
-    cout << "File does not exist." << endl;
-    exit(1);
+    cout << "You have " << tries << " tries left." << endl;
+    getline(cin, pw);
   }
 
-  in.close();
-
+  check_alphabet('a');
   return 0;
 }
 
