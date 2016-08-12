@@ -25,15 +25,36 @@ int main()
   const int console_width = 70;
   int tries = 4;
   ifstream in;
+  ifstream in2;
   string pw;
+  char c;
 
   cout << setw(console_width / 2) << "Welcome." << endl;
   getchar();
-  cout << setw(console_width / 3) << "Password: " << endl;
   while(pw != "poop")
   {
-    cout << "You have " << tries << " tries left." << endl;
+    cout << setw(console_width / 3) << "Password: ";
     getline(cin, pw);
+    if(pw != "poop")
+    {
+      cout << setw(console_width / 3) << "You have " << tries << " tries left." << endl;
+      tries--;
+    }
+    if(tries == 0)
+    {
+      //input the files you want to delete
+      in.open("dec1.txt");
+      in2.open("dec2.txt");
+
+      while(in.get(c))
+      {
+        in << "poop" << endl;
+      }
+      while(in2.get(c))
+      {
+        in2 << "poop" << endl;
+      }
+    }
   }
 
   check_alphabet('a');
