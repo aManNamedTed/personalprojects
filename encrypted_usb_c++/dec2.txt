@@ -1,2 +1,0 @@
-This is the encrypted definition file. When used together with 
-decrypted file 1, it should decrypted whatever is there.
