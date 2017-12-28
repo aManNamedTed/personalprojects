@@ -2,11 +2,24 @@ import math
 
 def menu():
     print"Vector Calculation Menu"
-    print"1. Add Vectors"
-    print"2. Subtract Vectors"
-    print"3. Option 3"
-    print"4. Option 4"
-    print"5. Exit"
+    print("""
+    1. Add Vectors
+    2. Subtract Vectors
+    3. Dot Product of Two Vectors
+    4. Cross Product of Two Vectors
+    5. Quit
+    """)
+    ans=raw_input("What would you like to do? ")
+    if ans=="1":
+        addVectors();
+    elif ans=="2":
+        print("poop")
+    elif ans=="3":
+        print("poop")
+    elif ans=="4":
+        print("poop")
+    elif ans=="5":
+        print("\nGoodbye!")
 
 def addVectors():
     print("Addition of two Vectors")
@@ -67,52 +80,3 @@ while loop:
     else:
         # Any integer inputs other than values 1-5 we print an error message
         raw_input("Wrong option selection. Enter any key to try again..")
-
-
-"""
-vector1 = [v1, v2]
-vector1 = [(v1 = raw_input("Enter v1: ")), (v2 = raw_input("Enter v2:"))]
-"""
-
-
-
-
-"""
-tupleAmount = raw_input("Enter how many entries in are in your tuple: ")
-type(tupleAmount)
-
-print(tupleAmount)
-
-aList = ['cool', 'awesome', 'new']
-
-def printme(str):
-    "this prints a string passed"
-    print str;
-    return
-
-"""
-
-"""
-
-printme("poop")
-
-for i in range(100):
-    print(i)
-
-while True:
-    try:
-        score = int(input("Enter your score: "))
-        break
-    except ValueError:
-        print("Int, please.")
-
-
-str = "123456";  # Only digit in this string
-print str.isdigit()
-
-str = "this is string example....wow!!!";
-print str.isdigit()
-
-while not str.isdigit():
-    str = raw_input("Enter a number: ");
-    """
