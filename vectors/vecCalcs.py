@@ -1,82 +1,205 @@
 import math
 
-def menu():
-    print"Vector Calculation Menu"
-    print("""
-    1. Add Vectors
-    2. Subtract Vectors
-    3. Dot Product of Two Vectors
-    4. Cross Product of Two Vectors
-    5. Quit
-    """)
-    ans=raw_input("What would you like to do? ")
-    if ans=="1":
-        addVectors();
-    elif ans=="2":
-        print("poop")
-    elif ans=="3":
-        print("poop")
-    elif ans=="4":
-        print("poop")
-    elif ans=="5":
-        print("\nGoodbye!")
 
 def addVectors():
-    print("Addition of two Vectors")
+    print("Addition of two vectors")
     #U Vector
-    u1 = raw_input("Enter u1: ")
+    u1 = input("Enter u1: ")
     while not u1.isdigit():
-        u1 = raw_input("Float input only. Enter u1:");
+        u1 = input("Float input only. Enter u1:");
 
-    u2 = raw_input("Enter vu: ")
+    u2 = input("Enter u2: ")
     while not u2.isdigit():
-        u1 = raw_input("Float input only. Enter u1:");
+        u2 = input("Float input only. Enter u2:");
 
-    uVec = [u1, u2]
+    u3 = input("Enter u3: ")
+    while not u3.isdigit():
+        u3 = input("Float input only. Enter u3:");
+
+    uVec = [float(u1), float(u2), float(u3)]
 
     #V Vector
-    v1 = raw_input("Enter v1: ")
+    v1 = input("Enter v1: ")
     while not v1.isdigit():
-        v1 = raw_input("Float input only. Enter v1:");
+        v1 = input("Float input only. Enter v1:");
 
-    v2 = raw_input("Enter v2: ")
+    v2 = input("Enter v2: ")
     while not v2.isdigit():
-        v1 = raw_input("Float input only. Enter v1:");
+        v2 = input("Float input only. Enter v2:");
 
-    vVec = [v1, v2]
+    v3 = input("Enter v3: ")
+    while not v3.isdigit():
+        v3 = input("Float input only. Enter v3:");
 
-    print("u = <%s,%s>, v = <%s,%s>" % (uVec[0], uVec[1], vVec[0], vVec[1]))
+    vVec = [float(v1), float(v2), float(v3)]
 
-    magn = math.sqrt(((float(uVec[1]) - float(uVec[0])))**2 + (float(vVec[1]) - float(vVec[0]))**2)
-    print(magn)
+    #W Vector (added vectors)
+    w0 = uVec[0] + vVec[0]
+    w1 = uVec[1] + vVec[1]
+    w2 = uVec[2] + vVec[2]
+    wVec = [float(w0), float(w1), float(w2)]
 
+    print("u = {}".format(uVec))
+    print("v = {}".format(vVec))
+    print("u + v = {}".format(wVec))
     return
 
+def subtractVectors():
+    print("Subtraction of two vectors")
+    #U Vector
+    u1 = input("Enter u1: ")
+    while not u1.isdigit():
+        u1 = input("Float input only. Enter u1:");
+
+    u2 = input("Enter u2: ")
+    while not u2.isdigit():
+        u2 = input("Float input only. Enter u2:");
+
+    u3 = input("Enter u3: ")
+    while not u3.isdigit():
+        u3 = input("Float input only. Enter u3:");
+
+    uVec = [float(u1), float(u2), float(u3)]
+
+    #V Vector
+    v1 = input("Enter v1: ")
+    while not v1.isdigit():
+        v1 = input("Float input only. Enter v1:");
+
+    v2 = input("Enter v2: ")
+    while not v2.isdigit():
+        v2 = input("Float input only. Enter v2:");
+
+    v3 = input("Enter v3: ")
+    while not v3.isdigit():
+        v3 = input("Float input only. Enter v3:");
+
+    vVec = [float(v1), float(v2), float(v3)]
+
+    #W Vector (subtracted vectors)
+    w0 = uVec[0] - vVec[0]
+    w1 = uVec[1] - vVec[1]
+    w2 = uVec[2] - vVec[2]
+    wVec = [float(w0), float(w1), float(w2)]
+
+    print("u = {}".format(uVec))
+    print("v = {}".format(vVec))
+    print("u - v = {}".format(wVec))
+    return
+
+def dotProduct():
+    print("Dot product of two vectors")
+    #U Vector
+    u1 = input("Enter u1: ")
+    while not u1.isdigit():
+        u1 = input("Float input only. Enter u1:");
+
+    u2 = input("Enter u2: ")
+    while not u2.isdigit():
+        u2 = input("Float input only. Enter u2:");
+
+    u3 = input("Enter u3: ")
+    while not u3.isdigit():
+        u3 = input("Float input only. Enter u3:");
+
+    uVec = [float(u1), float(u2), float(u3)]
+
+    #V Vector
+    v1 = input("Enter v1: ")
+    while not v1.isdigit():
+        v1 = input("Float input only. Enter v1:");
+
+    v2 = input("Enter v2: ")
+    while not v2.isdigit():
+        v2 = input("Float input only. Enter v2:");
+
+    v3 = input("Enter v3: ")
+    while not v3.isdigit():
+        v3 = input("Float input only. Enter v3:");
+
+    vVec = [float(v1), float(v2), float(v3)]
+
+    #Dot Product calculation
+    dotPro = (uVec[0] * vVec[0]) + (uVec[1] * vVec[1]) + (uVec[2] * vVec[2])
+
+    print("u = {}".format(uVec))
+    print("v = {}".format(vVec))
+    print("Dot Product = {}".format(dotPro))
+    return
+
+def crossProduct():
+    print("Cross product of two vectors")
+    #U Vector
+    u1 = input("Enter u1: ")
+    while not u1.isdigit():
+        u1 = input("Float input only. Enter u1:");
+
+    u2 = input("Enter u2: ")
+    while not u2.isdigit():
+        u2 = input("Float input only. Enter u2:");
+
+    u3 = input("Enter u3: ")
+    while not u3.isdigit():
+        u3 = input("Float input only. Enter u3:");
+
+    uVec = [float(u1), float(u2), float(u3)]
+
+    #V Vector
+    v1 = input("Enter v1: ")
+    while not v1.isdigit():
+        v1 = input("Float input only. Enter v1:");
+
+    v2 = input("Enter v2: ")
+    while not v2.isdigit():
+        v2 = input("Float input only. Enter v2:");
+
+    v3 = input("Enter v3: ")
+    while not v3.isdigit():
+        v3 = input("Float input only. Enter v3:");
+
+    vVec = [float(v1), float(v2), float(v3)]
+
+    #W Vector (cross product of u and v)
+    w0 = uVec[1] * vVec[2] - uVec[2] * vVec[1]
+    w1 = uVec[0] * vVec[2] - uVec[2] * vVec[0]
+    w2 = uVec[0] * vVec[1] - uVec[1] * vVec[0]
+    wVec = [float(w0), float(w1), float(w2)]
+
+    print("u = {}".format(uVec))
+    print("v = {}".format(vVec))
+    print("u x v = {}".format(wVec))
+    return
+
+def menu():
+    print("Vector Calculation Menu")
+    print("""
+        1. Add Vectors
+        2. Subtract Vectors
+        3. Dot Product of Two Vectors
+        4. Cross Product of Two Vectors
+        5. Quit
+    """)
+    ans=input("What would you like to do? ")
+    if ans == "1":
+        addVectors()
+        input("")
+    elif ans == "2":
+        subtractVectors()
+        input("")
+    elif ans == "3":
+        dotProduct()
+        input("")
+    elif ans == "4":
+        crossProduct()
+        input("")
+    elif ans == "5":
+        print("\nGoodbye!")
+        return False
+    else:
+        input("Wrong option selection. Enter any key to try again...")
+
+    return True
 
 loop = True
 while loop:
-    menu()
-
-    choice = "a"
-    while (choice.isdigit()):
-        choice = raw_input("Enter your choice[1-5]: ")
-
-    if choice==1:
-        addVectors()
-        ## You can add your code or functions here
-    elif choice==2:
-        print "Menu 2 has been selected"
-        ## You can add your code or functions here
-    elif choice==3:
-        print "Menu 3 has been selected"
-        ## You can add your code or functions here
-    elif choice==4:
-        print "Menu 4 has been selected"
-        ## You can add your code or functions here
-    elif choice==5:
-        print "Menu 5 has been selected"
-        ## You can add your code or functions here
-        loop=False # This will make the while loop to end as not value of loop is set to False
-    else:
-        # Any integer inputs other than values 1-5 we print an error message
-        raw_input("Wrong option selection. Enter any key to try again..")
+    loop = menu()
