@@ -1,9 +1,13 @@
 import datetime
 
+def stub():
+    calcTax(300)
+    return
+
 #Print Receipt Header
 def printHeader():
     now = datetime.datetime.now()
-    file = open("registerDetails", "r")
+    registerDetails = open("registerDetails", "r")
     print("=======================================")
     print("The Store")
     print("123 Avenue")
@@ -11,64 +15,70 @@ def printHeader():
     print("555.555.5555")
     print("Where Bargains Live!")
     print()
+    registerDetails.close()
     return
 
 #Calculate Tax
 def calcTax(subtotal):
     registerDetails = open("registerDetails", "r")
-    print(registerDetails.readlines())
-    return (subtotal + (subtotal * tax_rate))
-#A
+    s = registerDetails.readlines()
+    if(s.find("Tax: " ))
+
+
+    return 4#(subtotal + (subtotal * tax_rate))
+    registerDetails.close()
+
+#A Sale
 def sale():
     return
 
-#B
+#B Return Item
 def returnItem():
     return
 
-#C
+#C Close Register
 def closeRegister():
     return
 
-#D
+#D Duplicate Receipt
 def duplicateReceipt():
     return
 
-#E
+#E No Sale
 def noSale():
     print("Register opens")
     input("Press enter to close the register...")
     return
 
-#F
+#F Employee Sale
 def employeeSale():
     return
 
-#G
+#G Employee Return
 def employeeReturn():
     return
 
-#H
+#H Loans
 def loans():
     return
 
-#I
+#I Price Check
 def priceCheck():
     return
 
-#J
+#J Inquiries
 def inquiries():
     return
 
-#K
-def openingBalance:
+#K Opening Balance
+def openingBalance():
     return
 
-#L
+#L Closing Counts
 def closingCounts():
     return
 
-#M
+#M Gift Receipt
 def giftReceipt():
     return
 
@@ -93,43 +103,32 @@ def menu():
     ans=input("Selection: ")
     if ((ans == "A") or (ans == "a")):
         sale()
-        input("")
     elif ((ans == "B") or (ans == "b")):
         returnItem()
-        input("")
     elif ((ans == "C") or (ans == "c")):
         closeRegister()
-        input("")
     elif ((ans == "D") or (ans == "d")):
         duplicateReceipt()
-        input("")
     elif ((ans == "E") or (ans == "e")):
         noSale()
-        input("")
     elif ((ans == "F") or (ans == "f")):
         employeeSale()
-        input("")
     elif ((ans == "G") or (ans == "g")):
         employeeReturn()
-        input("")
     elif ((ans == "H") or (ans == "h")):
         loans()
-        input("")
     elif ((ans == "I") or (ans == "i")):
         priceCheck()
-        input("")
     elif ((ans == "J") or (ans == "j")):
         inquiries()
-        input("")
     elif ((ans == "K") or (ans == "k")):
         openingBalance()
-        input("")
     elif ((ans == "L") or (ans == "l")):
         closingCounts()
-        input("")
     elif ((ans == "M") or (ans == "m")):
         giftReceipt()
-        input("")
+    elif ((ans == "N") or (ans == "n")):
+        stub()
     else:
         input("Wrong option selection. Enter a valid option...")
 
