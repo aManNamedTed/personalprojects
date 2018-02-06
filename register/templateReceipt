@@ -1,0 +1,30 @@
+David's Universal POS Software
+Motto goes here
+
+David's Universal POS Software
+123 Avenue
+City, State 12345
+555-555-5555
+
+Order: 0000
+(HERE) or (TO GO)
+
+Cashier: Person Dude
+04-Month-Year 12:12:12pm (time started)
+
+Transaction: 0000000
+
+1 Item Title                $000.00
+  Add On: Add-on Title       $00.00
+
+Subtotal                     $00.00
+Tax                          $00.00
+
+Total                        $00.00
+Tip                          $00.00
+
+Payment Method               $00.00
+Credit Card Name: 8888 (last four of cc)
+
+04-month-year 12:12:12p (time completed)
+barcode
