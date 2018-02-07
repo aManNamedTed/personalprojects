@@ -1,4 +1,5 @@
-import datetime
+import datetime         #for current date on receipt
+import csv              #for csvfile reading
 
 #Finds Tax Rate in the string from registerDetails
 def findTax(string):
@@ -107,17 +108,35 @@ def giftReceipt():
 def verifyLogin(cashierNumber, cashierPassword)
     return
 
+#Initializes cashiers from read-only file in directory
+def initCashiers():
+    with open('cashierDetails.csv', 'r') as csvfile:
+        cashierDetails = csv.reader(csvfile, delimiter=',')
+        uidList = []        #(attr + "List") for verboseness
+        nameList = []       #(attr + "List") for verboseness
+        passwordList = []   #(attr + "List") for verboseness
+        for row in cashierDetails:
+            uid = row[0]
+            name = row[1]
+            password = row[2]
+
+            uidList.append(uid)
+            nameList.append(name)
+            passwordList.append(password)
+
 # Cashier Sign-in
 def login():
+    initCashiers()
     cashierNumber = input("Cashier Number: ")
     cashierPassword = input("Cashier Password: ")
+
 
 
     return
 
 # Transaction Selection
 def menu():
-    loop = False
+    loop = True
 
     print("David's Universal POS")
     print("""
@@ -139,43 +158,30 @@ def menu():
     ans=input("Selection: ")
     if ((ans == "A") or (ans == "a")):
         sale()
-        loop = True
     elif ((ans == "B") or (ans == "b")):
         returnItem()
-        loop = True
     elif ((ans == "C") or (ans == "c")):
         closeRegister()
-        loop = True
     elif ((ans == "D") or (ans == "d")):
         duplicateReceipt()
-        loop = True
     elif ((ans == "E") or (ans == "e")):
         noSale()
-        loop = True
     elif ((ans == "F") or (ans == "f")):
         employeeSale()
-        loop = True
     elif ((ans == "G") or (ans == "g")):
         employeeReturn()
-        loop = True
     elif ((ans == "H") or (ans == "h")):
         loans()
-        loop = True
     elif ((ans == "I") or (ans == "i")):
         priceCheck()
-        loop = True
     elif ((ans == "J") or (ans == "j")):
         inquiries()
-        loop = True
     elif ((ans == "K") or (ans == "k")):
         openingBalance()
-        loop = True
     elif ((ans == "L") or (ans == "l")):
         closingCounts()
-        loop = True
     elif ((ans == "M") or (ans == "m")):
         giftReceipt()
-        loop = True
     else:
         input("Wrong option selection. Selection: ")
         loop = False
