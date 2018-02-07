@@ -1,13 +1,17 @@
 import datetime         #for current date on receipt
 import csv              #for csvfile reading
 
+#Error function to minimize string reuse [is either missing or... etc]
+def printError(string):
+    print("{} is either missing or modified. Aborting...".format(string))
+
 #Finds Tax Rate in the string from registerDetails
 def findTax(string):
     if(string[0] == 'T' and string[1] == 'a' and string[2] == 'x'
     and string[3] == ':'):
         taxRate = float(string[4:])
     else:
-        print("tax string is either missing or modified")
+        printError("Tax string")
     return taxRate
 
 #Finds Receipt Number in the string from registerDetails
@@ -17,20 +21,24 @@ def findReceiptNumber(string):
     and string[6] == 't' and string[7] == ' '):
         receiptNumber = str(string[16:])
     else:
-        print("Receipt Number is either missing or modified. Aborting...")
+        printError("Receipt Number")
         receiptNumber = -1
 
     return str(receiptNumber)
 
 #Print Receipt Header
-def printHeader():
+def printHeader(cashierNameParent):
+    #initializing current date object, and string
     now = datetime.datetime.now()
+    dateString = ("{}.{}.{} {}:{}:{}".format(now.day,
+    now.month, now.year, now.hour, now.minute, now.second))
+
     registerDetails = open("registerDetails", "r")
     stringifiedRegisterDetails = registerDetails.readlines()
 
     receiptNumber = findReceiptNumber(stringifiedRegisterDetails[0])
     taxRate = findTax(stringifiedRegisterDetails[1])
-    cashierName = findCashier()
+    cashierName = cashierNameParent
 
     print("=======================================")
     print("The Store")
@@ -40,7 +48,10 @@ def printHeader():
     print("Where Bargains Live!")
     print()
     print("Order: {}".format(receiptNumber))
-    print("Cashier: {}".format(cashierName))
+    print("Cashier:{}".format(cashierName))
+    print(dateString)
+    print("Transaction: {}".format(receiptNumber))
+
 
     registerDetails.close()
     return
@@ -50,65 +61,62 @@ def calcTax(subTotal, taxRate):
     return (subTotal + (subTotal * taxRate))
 
 #A Sale
-def sale():
-    printHeader()
+def sale(cashierName):
+    printHeader(cashierName)
     return
 
 #B Return Item
-def returnItem():
+def returnItem(cashierName):
     return
 
 #C Close Register
-def closeRegister():
+def closeRegister(cashierName):
     return
 
 #D Duplicate Receipt
-def duplicateReceipt():
+def duplicateReceipt(cashierName):
     return
 
 #E No Sale
-def noSale():
+def noSale(cashierName):
     print("Register opens")
     input("Press enter to close the register...")
     return
 
 #F Employee Sale
-def employeeSale():
+def employeeSale(cashierName):
     return
 
 #G Employee Return
-def employeeReturn():
+def employeeReturn(cashierName):
     return
 
 #H Loans
-def loans():
+def loans(cashierName):
     return
 
 #I Price Check
-def priceCheck():
+def priceCheck(cashierName):
     return
 
 #J Inquiries
-def inquiries():
+def inquiries(cashierName):
     return
 
 #K Opening Balance
-def openingBalance():
+def openingBalance(cashierName):
     return
 
 #L Closing Counts
-def closingCounts():
+def closingCounts(cashierName):
     return
 
 #M Gift Receipt
-def giftReceipt():
-    return
-
-# Verify Login
-def verifyLogin(cashierNumber, cashierPassword)
+def giftReceipt(cashierName):
     return
 
 #Initializes cashiers from read-only file in directory
+#Returns 3 lists, uidList, nameList, passwordList, to be verified later
 def initCashiers():
     with open('cashierDetails.csv', 'r') as csvfile:
         cashierDetails = csv.reader(csvfile, delimiter=',')
@@ -124,69 +132,88 @@ def initCashiers():
             nameList.append(name)
             passwordList.append(password)
 
+    return uidList, nameList, passwordList
+
+# Verify Login, grabs information from read-only list of employees
+def verifyLogin(cashierNumber, cashierPassword):
+    uidList, nameList, passwordList  = initCashiers()
+
+    if (cashierNumber in uidList):
+        cashierIndex = uidList.index(str(cashierNumber))
+        if(int(cashierPassword) == int(passwordList[cashierIndex])):
+            cashierName = nameList[cashierIndex]
+            access = True
+        else:
+            print("Cashier UID or Cashier PW invalid.")
+            cashierName = "VOID"
+            access = False
+
+    return access, cashierName
+
 # Cashier Sign-in
 def login():
-    initCashiers()
+    #no need to verify details, just spit out invalid login
     cashierNumber = input("Cashier Number: ")
     cashierPassword = input("Cashier Password: ")
-
-
-
-    return
+    return verifyLogin(cashierNumber, cashierPassword)
 
 # Transaction Selection
 def menu():
-    loop = True
+    access, cashierName = login()
 
-    print("David's Universal POS")
-    print("""
-        #A: Sale
-        #B: Return
-        #C: Close Register
-        #D: Duplicate Receipt
-        #C: Post Void
-        E: No Sale
-        #F: Employee Sale
-        #G: Employee Return
-        #H: Loans
-        #I: Price Check
-        #J: Inquiries
-        #K: Opening Balance
-        #L: Closing Counts
-        #M: Gift Receipt
-    """)
-    ans=input("Selection: ")
-    if ((ans == "A") or (ans == "a")):
-        sale()
-    elif ((ans == "B") or (ans == "b")):
-        returnItem()
-    elif ((ans == "C") or (ans == "c")):
-        closeRegister()
-    elif ((ans == "D") or (ans == "d")):
-        duplicateReceipt()
-    elif ((ans == "E") or (ans == "e")):
-        noSale()
-    elif ((ans == "F") or (ans == "f")):
-        employeeSale()
-    elif ((ans == "G") or (ans == "g")):
-        employeeReturn()
-    elif ((ans == "H") or (ans == "h")):
-        loans()
-    elif ((ans == "I") or (ans == "i")):
-        priceCheck()
-    elif ((ans == "J") or (ans == "j")):
-        inquiries()
-    elif ((ans == "K") or (ans == "k")):
-        openingBalance()
-    elif ((ans == "L") or (ans == "l")):
-        closingCounts()
-    elif ((ans == "M") or (ans == "m")):
-        giftReceipt()
-    else:
-        input("Wrong option selection. Selection: ")
-        loop = False
+    #access kicks out any login that is invalid
+    while (access):
+        loop = True
 
-    return loop
+        print("David's Universal POS")
+        print("""
+            #A: Sale
+            #B: Return
+            #C: Close Register
+            #D: Duplicate Receipt
+            #C: Post Void
+            E: No Sale
+            #F: Employee Sale
+            #G: Employee Return
+            #H: Loans
+            #I: Price Check
+            #J: Inquiries
+            #K: Opening Balance
+            #L: Closing Counts
+            #M: Gift Receipt
+        """)
+        ans=input("Selection: ")
+        if ((ans == "A") or (ans == "a")):
+            sale(cashierName)
+        elif ((ans == "B") or (ans == "b")):
+            returnItem(cashierName)
+        elif ((ans == "C") or (ans == "c")):
+            closeRegister(cashierName)
+        elif ((ans == "D") or (ans == "d")):
+            duplicateReceipt(cashierName)
+        elif ((ans == "E") or (ans == "e")):
+            noSale(cashierName)
+        elif ((ans == "F") or (ans == "f")):
+            employeeSale(cashierName)
+        elif ((ans == "G") or (ans == "g")):
+            employeeReturn(cashierName)
+        elif ((ans == "H") or (ans == "h")):
+            loans(cashierName)
+        elif ((ans == "I") or (ans == "i")):
+            priceCheck(cashierName)
+        elif ((ans == "J") or (ans == "j")):
+            inquiries(cashierName)
+        elif ((ans == "K") or (ans == "k")):
+            openingBalance(cashierName)
+        elif ((ans == "L") or (ans == "l")):
+            closingCounts(cashierName)
+        elif ((ans == "M") or (ans == "m")):
+            giftReceipt(cashierName)
+        else:
+            input("Wrong option selection. Selection: ")
+            loop = False
+
+        return loop
 
 loop = True
 while loop:
