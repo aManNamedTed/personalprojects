@@ -30,7 +30,7 @@ def findReceiptNumber(string):
 def printHeader(cashierNameParent):
     #initializing current date object, and string
     now = datetime.datetime.now()
-    dateString = ("{}.{}.{} {}:{}:{}".format(now.day,
+    dateString = ("{}.{}.{}, {}:{}:{}".format(now.day,
     now.month, now.year, now.hour, now.minute, now.second))
 
     registerDetails = open("registerDetails", "r")
@@ -47,12 +47,9 @@ def printHeader(cashierNameParent):
     print("555.555.5555")
     print("Where Bargains Live!")
     print()
-    print("Order: {}".format(receiptNumber))
     print("Cashier:{}".format(cashierName))
-    print(dateString)
     print("Transaction: {}".format(receiptNumber))
-
-
+    print(dateString)
     registerDetails.close()
     return
 
@@ -63,7 +60,27 @@ def calcTax(subTotal, taxRate):
 #A Sale
 def sale(cashierName):
     printHeader(cashierName)
-    return
+    with open('inventoryList.csv', 'r') as csvfile:
+        inventoryList = csv.reader(csvfile, delimiter=',')
+        itemIDList = []        #(attr + "List") for verboseness
+        itemNameList = []      #(attr + "List") for verboseness
+        itemPriceList = []     #(attr + "List") for verboseness
+        for row in cashierDetails:
+            itemID = row[0]
+            itemName = row[1]
+            itemPrice = row[2]
+
+            itemIDList.append(itemID)
+            itemNameList.append(itemName)
+            itemPriceList.append(itemPrice)
+        csvfile.close()
+
+
+    sku = input("SKU: ")
+    while sku.isdigit():
+        sku = input("SKU: ")
+        # TODO: find skus
+
 
 #B Return Item
 def returnItem(cashierName):
@@ -71,6 +88,8 @@ def returnItem(cashierName):
 
 #C Close Register
 def closeRegister(cashierName):
+    print("Print summary of today's transactions")
+    print("Register closed by {}.".format(cashierName))
     return
 
 #D Duplicate Receipt
@@ -131,6 +150,7 @@ def initCashiers():
             uidList.append(uid)
             nameList.append(name)
             passwordList.append(password)
+        csvfile.close()
 
     return uidList, nameList, passwordList
 
@@ -169,9 +189,8 @@ def menu():
         print("""
             #A: Sale
             #B: Return
-            #C: Close Register
+            C: Close Register
             #D: Duplicate Receipt
-            #C: Post Void
             E: No Sale
             #F: Employee Sale
             #G: Employee Return
