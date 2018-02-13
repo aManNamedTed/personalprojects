@@ -60,12 +60,37 @@ def calcTax(subTotal, taxRate):
 #A Sale
 def sale(cashierName):
     printHeader(cashierName)
+
+    # flag to keep loop going until a payment option is chosen
+    finishedOrdering = False
+
+    while(not finishedOrdering):
+        sku = input("SKU (-1 to exit to payment): ")
+
+        if(sku in itemIDList):
+            skuIndex = itemIDList.index(str(sku))
+
+            
+            print("{} found as {} in itemIDList".format(sku, itemIDList[skuIndex]))
+            print("{} is the item for SKU {}.".format(itemNameList[skuIndex], skuIndex))
+            if(sku == "-1"):
+                finishedOrdering = True
+
+        else:
+            print("Item {} not found.".format(sku))
+
+
+
+        # TODO: find skus
+
+#initInventory, reads csv of inventory in log, and returns csv as list to the function calling it
+def initInventory():
     with open('inventoryList.csv', 'r') as csvfile:
         inventoryList = csv.reader(csvfile, delimiter=',')
         itemIDList = []        #(attr + "List") for verboseness
         itemNameList = []      #(attr + "List") for verboseness
         itemPriceList = []     #(attr + "List") for verboseness
-        for row in cashierDetails:
+        for row in inventoryList:
             itemID = row[0]
             itemName = row[1]
             itemPrice = row[2]
@@ -75,12 +100,7 @@ def sale(cashierName):
             itemPriceList.append(itemPrice)
         csvfile.close()
 
-
-    sku = input("SKU: ")
-    while sku.isdigit():
-        sku = input("SKU: ")
-        # TODO: find skus
-
+    return itemIDList, itemNameList, itemPriceList
 
 #B Return Item
 def returnItem(cashierName):

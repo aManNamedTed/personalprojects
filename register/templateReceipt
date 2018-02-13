@@ -17,7 +17,6 @@ Subtotal                     $00.00
 Tax                          $00.00
 
 Total                        $00.00
-Tip                          $00.00
 
 Payment Method               $00.00
 Credit Card Name: 8888 (last four of cc)
@@ -25,3 +24,19 @@ Credit Card Name: 8888 (last four of cc)
 04-month-year 12:12:12p (time completed)
 barcode
 =======================================
+
+
+you could either create a string of objects
+and add a \n to every sku
+
+so like
+
+sku \n
+sku \n
+sku \n
+
+then you'd have to put those sku price floats
+into a list and you could send the list to 
+a subtotal(priceList) function and also a
+grandTotal(priceList) function that would calculate
+the last two parts of the receipt
