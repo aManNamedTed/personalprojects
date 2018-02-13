@@ -129,6 +129,42 @@ def sale(cashierName):
         else:
             print("SKU #{} not found.".format(sku))
 
+    #when done purchasing, or sku == -1, checkout the customer
+    checkout()
+
+#Allow for payment by the customer
+def checkout():
+    paymentOption = "0"
+    while(paymentOption != "1" or paymentOption != "2" or paymentOption != "3"):
+        print("1: Cash")
+        print("2: Credit Card")
+        print("3: Gift Card")
+        paymentOption = input("Pick a payment option: ")
+        if(paymentOption == "1"):
+            payByCash()
+        elif(paymentOption == "2"):
+            payByCreditCard()
+        elif(paymentOption == "3"):
+            payByGiftCard()
+        else:
+            print("Invalid payment option. Try again.")
+
+#TODO: these three functions
+#pay by cash, takes in cash input, returns change
+def payByCash():
+    print("pay by cash")
+    return
+
+#pay by credit card, takes in cc number, returns confirmation
+def payByCreditCard():
+    print("pay by credit card")
+    return
+
+#pay by gift card, takes in gift card number, returns amount and remaining balance if applicable
+def payByGiftCard():
+    print("pay by gift card")
+    return
+
 #initInventory, reads csv of inventory in log, and returns csv as list to the function calling it
 def initInventory():
     with open('inventoryList.csv', 'r') as csvfile:
