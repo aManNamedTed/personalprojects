@@ -53,13 +53,34 @@ def printHeader(cashierNameParent):
     registerDetails.close()
     return
 
-#Calculate Tax
+#Calculate Tax 
 def calcTax(subTotal, taxRate):
-    return (subTotal + (subTotal * taxRate))
+    return (subTotal * taxRate)
+
+#Calculate Grand Total (subtotal + tax)
+def calcGrandTotal(subTotal, taxAmount):
+    return (subTotal + taxAmount)
+
+#Calculates subtotal from a list passed into the function
+def calcSubTotal(wantToPurchase):
+    subTotal = 0.00 #need to init
+
+    for i in range(len(wantToPurchase)):
+        subTotal += float(wantToPurchase[i])
+
+    return subTotal
+
 
 #A Sale
 def sale(cashierName):
+    #prints header of receipt with cashier's name in cashier place
     printHeader(cashierName)
+
+    #init lists to be utilized later
+    itemIDList, itemNameList, itemPriceList = initInventory()
+
+    #need to init a list for subtotal amount
+    wantToPurchase = [] 
 
     # flag to keep loop going until a payment option is chosen
     finishedOrdering = False
@@ -70,9 +91,10 @@ def sale(cashierName):
         if(sku in itemIDList):
             skuIndex = itemIDList.index(str(sku))
 
-            
-            print("{} found as {} in itemIDList".format(sku, itemIDList[skuIndex]))
-            print("{} is the item for SKU {}.".format(itemNameList[skuIndex], skuIndex))
+            print("{}:{},{}".format(itemIDList[skuIndex], itemNameList[skuIndex], itemPriceList[skuIndex]))
+
+            wantToPurchase.append(itemPriceList[skuIndex])
+            print("Subtotal: {}".format(float(calcSubTotal(wantToPurchase))))
             if(sku == "-1"):
                 finishedOrdering = True
 
@@ -80,8 +102,6 @@ def sale(cashierName):
             print("Item {} not found.".format(sku))
 
 
-
-        # TODO: find skus
 
 #initInventory, reads csv of inventory in log, and returns csv as list to the function calling it
 def initInventory():
