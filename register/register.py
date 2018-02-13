@@ -70,38 +70,64 @@ def calcSubTotal(wantToPurchase):
 
     return subTotal
 
-
 #A Sale
 def sale(cashierName):
     #prints header of receipt with cashier's name in cashier place
     printHeader(cashierName)
 
+    #getting tax rate
+    registerDetails = open("registerDetails", "r")
+    stringifiedRegisterDetails = registerDetails.readlines()
+    taxRate = findTax(stringifiedRegisterDetails[1])
+    registerDetails.close()
+
     #init lists to be utilized later
     itemIDList, itemNameList, itemPriceList = initInventory()
 
-    #need to init a list for subtotal amount
-    wantToPurchase = [] 
+    wantToPurchase = [] # init a list for subtotal amount
+    purchasedSoFar = [] # init a list for names of items purchased so far
 
     # flag to keep loop going until a payment option is chosen
     finishedOrdering = False
 
     while(not finishedOrdering):
         sku = input("SKU (-1 to exit to payment): ")
+        print()
 
         if(sku in itemIDList):
             skuIndex = itemIDList.index(str(sku))
 
-            print("{}:{},{}".format(itemIDList[skuIndex], itemNameList[skuIndex], itemPriceList[skuIndex]))
+            print("=======================================")
+            print("Current Item: {}:{},{}".format(itemIDList[skuIndex], itemNameList[skuIndex], itemPriceList[skuIndex]))
 
+            #join three list items into one string, and store as string for later list appendage
+            purchasedItem = ("{}:{},{}".format(itemIDList[skuIndex], itemNameList[skuIndex], itemPriceList[skuIndex]))
+
+            #append large string of purchased item to list, for printing before subtotal line
+            purchasedSoFar.append(purchasedItem)
+
+            #append price to list to later be calculated for subtotal/grandtotal
             wantToPurchase.append(itemPriceList[skuIndex])
-            print("Subtotal: {}".format(float(calcSubTotal(wantToPurchase))))
+
+            #print purchased list of items onto screen for user to see on screen
+            print("=======================================")
+            print("All Items So Far ({})".format(len(purchasedSoFar)))
+            print("=======================================")
+            for i in range(len(purchasedSoFar)):
+                print(purchasedSoFar[i])
+
+            #print subtotal and grandtotal for user to see
+            subTotal = float(calcSubTotal(wantToPurchase))
+            print("Subtotal: ${:.2f}".format(subTotal))
+            print("Grand Total: ${:.2f}".format(calcGrandTotal(subTotal, calcTax(subTotal, taxRate))))
+            print("=======================================")
+
+            #flag for when to stop computing sales
             if(sku == "-1"):
                 finishedOrdering = True
 
         else:
-            print("Item {} not found.".format(sku))
-
-
+            print("SKU #{} not found.".format(sku))
 
 #initInventory, reads csv of inventory in log, and returns csv as list to the function calling it
 def initInventory():
