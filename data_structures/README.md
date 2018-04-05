@@ -6,7 +6,7 @@
 - Big O of arrays
 - Uses
 
-### 2. Linked Lists
+## 2. Linked Lists (april 5, 2018)
 - Background of ll
 - big o of ll
 - uses
