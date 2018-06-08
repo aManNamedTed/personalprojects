@@ -54,17 +54,3 @@ int main()
     matches.push_back{match};
     return 0;
 }    
-/*
-    char womenPreferences[4][4] = {{'B', 'W', 'B', 'B'},
-                                   {'D', 'D', 'W', 'W'},
-                                   {'C', 'B', 'D', 'D'},
-                                   {'W', 'C', 'C', 'C'}
-    };
-
-    //make men prefs, columns 
-    char menPreferences[4][4] = {{'J', 'J', 'E', 'L'},
-                                 {'E', 'E', 'J', 'J'},
-                                 {'L', 'L', 'C', 'E'},
-                                 {'C', 'C', 'L', 'C'}
-    };
-    */
