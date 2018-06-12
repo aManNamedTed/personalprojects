@@ -26,31 +26,23 @@
 #include <cstring>
 using namespace std;
 
+
 int main()
 {
+    int arrLen = 5;
     //make women prefs, array per woman
-    char charlotte[4] = {'B', 'D', 'C', 'W'};
-    char elizabeth[4] = {'W', 'D', 'B', 'C'};
-    char jane[4] =      {'B', 'W', 'D', 'C'};
-    char lydia[4] =     {'B', 'W', 'D', 'C'};
+    char charlotte[arrLen] = {'c', 'B', 'D', 'C', 'W'};
+    char elizabeth[arrLen] = {'e', 'W', 'D', 'B', 'C'};
+    char jane[arrLen] =      {'j', 'B', 'W', 'D', 'C'};
+    char lydia[arrLen] =     {'l', 'B', 'W', 'D', 'C'};
 
     //make men prefs, array per man
-    char bingley[4] = {'J', 'E', 'L', 'C'};
-    char collins[4] = {'J', 'E', 'L', 'C'};
-    char darcy[4] =   {'E', 'J', 'C', 'L'};
-    char wickham[4] = {'L', 'J', 'E', 'C'};
+    char bingley[arrLen] = {'b', 'J', 'E', 'L', 'C'};
+    char collins[arrLen] = {'c', 'J', 'E', 'L', 'C'};
+    char darcy[arrLen] =   {'d', 'E', 'J', 'C', 'L'};
+    char wickham[arrLen] = {'w', 'L', 'J', 'E', 'C'};
 
-    for(int i = 0; i < 4; i++)
-    {
-        for(int j = 0; j < 4; j++)
-        {
-            
-        }
-    }
-
-    vector<string> matches;
-    matches.clear();
-    string match = "";
-    matches.push_back{match};
+    string tentativeMatches[arrLen]
     return 0;
 }    
+
