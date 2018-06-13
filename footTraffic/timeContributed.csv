@@ -1,0 +1,18 @@
+person, uni_week, month, day_num, day_str, location, minutes_worked, lecture_end_time
+David, 1, April, 5, Thursday, Peterson Hall, 17, 9:20AM
+David, 1, April, 5, Thursday, Price Theater, 19, 12:20PM
+David, 1, April, 5, Thursday, Galbraith Hall, 16, 1:50PM
+Stephen, 2, April, 9, Monday, Warren Lecture Hall, 19, 11:50AM
+Stephen, 2, April, 9, Monday, Pepper Canyon Hall, 22, 3:50PM
+David, 2, April, 10, Tuesday, Peterson Hall, 21, 9:20AM
+David, 2, April, 10, Tuesday, Price Theater, 18, 12:20PM
+David, 2, April, 10, Tuesday, Galbraith Hall, 17, 1:50PM
+Stephen, 2, April, 11, Wednesday, Warren Lecture Hall, 18, 11:50AM
+Stephen, 2, April, 11, Wednesday, Pepper Canyon Hall, 20, 3:50PM
+David, 2, April, 12, Thursday, Peterson Hall, 18, 9:20AM
+David, 2, April, 12, Thursday, Price Theater, 19, 12:20PM
+David, 2, April, 12, Thursday, Galbraith Hall, 15, 1:50PM
+Stephen, 2, April, 13, Friday, Warren Lecture Hall, 16, 11:50AM
+Stephen, 2, April, 13, Friday, Pepper Canyon Hall, 18, 3:50PM
+Stephen, 3, April, 16, Monday, Warren Lecture Hall, 17, 11:50AM
+Stephen, 3, April, 16, Monday, Pepper Canyon Hall, 19, 3:50PM
