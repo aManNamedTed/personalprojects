@@ -1,3 +1,6 @@
+#Update July 31, 2018
+  Attempted round robbin scheduler. WOW so hard but will refactor in python in the future.
+
 #Todo: big o, implementation, uses
   1. djikstras
   2. A*
