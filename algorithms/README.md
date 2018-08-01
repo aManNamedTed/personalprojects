@@ -19,6 +19,19 @@
   18. secure hash 
   19. integer factorization
   20. link analysis
+  --. binary search (iterative)
+  --. binary search (recursive)
+  --. randomized quicksort (pay attn to partition subroutine; it's useful)
+  --. mergesort
+  --. breadth-first search in a graph
+  --. depth-first search in a graph (augment it to detect cycles)
+  --. tree traversals (pre,in,post-order)
+  --. topoligical sort (using tarjan's algorithm)
+  --. djikstra's algorithm (without decrease-key)
+  --. longest common subsequence 
+    (using dyn prog with matrices)
+  --. knapsack problem (dyn prog)
+  --. LRU cache
 #statistics suite?
   21. t test
   22. chi square

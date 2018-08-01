@@ -1,12 +1,16 @@
-# Data Structures Practice (Java), started 4.2.18
+# Data Structures Practice (C++), started 8.1.18
 ## Reference link: http://www.columbia.edu/~jxz2101/#83
 
-### 1. Arrays
-- Background of arrays
-- Big O of arrays
-- Uses
+## Things to remember
 
-## 2. Linked Lists (april 5, 2018)
+IN JAVA
+         | ArrayList | LinkedList |
+get()    |    O(1)   |    O(n)    |
+add()    |    O(1)   |    O(1) amo|
+remove() |    O(n)   |    O(n)    |
+
+
+### 2. Linked Lists (april 5, 2018)
 - Background of ll
 - big o of ll
 - uses
@@ -19,12 +23,12 @@
   - question: write a functio nto determine if a string consisting of the chars () is balanced
   
 ### 4. Queues
-- bg of queues
+- bg of queuess
 - big o
 - uses
   - ?: given one queue and one stack, how do you reverse the stack?
  
-### 5. hash maps
+### 5. Hash map (with chaining)
 - bg of hm
 - big o
 - uses
@@ -54,3 +58,21 @@
 ?: depth first search
 ?: breadth first search
   
+
+### 8. Dynamic Array
+ - implemented with a ring buffer (use a statically sized array under the hood)
+
+### 9. Hash set
+
+### 11. Binary heap 
+- (without decrease-key; know that fibonacci heaps exist and know their guarantees)
+
+### 12.Binary search trees 
+- (doesn't need to be self balancing; know that self-balancing trees exist and know their guarentees)
+
+### 13. Prefix tree (aka Trie)
+
+### 14. Suffix tree 
+- (don't worry about compression, just build a dumb version; know that ukkonen's algo exists and learn its guarantees)
+
+### An object-oriented adjacency list for graphs
